@@ -176,6 +176,20 @@
       outline: none;
       transform: none;
     }
+
+    /* Responsive สำหรับมือถือจอเล็ก */
+    @media (max-width: 480px) {
+      form {
+        grid-template-columns: 1fr !important;
+      }
+      button[type="submit"] {
+        grid-column: span 1 !important;
+      }
+      table thead tr th,
+      table tbody tr td {
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
