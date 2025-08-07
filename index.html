@@ -16,7 +16,7 @@
       background: linear-gradient(135deg, #d0f0c0 0%, #a8e0ff 100%);
       min-height: 100vh;
       margin: 0;
-      padding: 2rem 1rem;
+      padding: 1rem;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -32,32 +32,31 @@
     header {
       background-color: #27ae60;
       color: white;
-      padding: 1.5rem 2rem;
+      padding: 1.25rem;
       display: flex;
       align-items: center;
       gap: 1rem;
-      user-select: none;
       box-shadow: 0 4px 8px rgb(39 174 96 / 0.6);
     }
     header img {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
     }
     header h1 {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
       margin: 0;
     }
     main {
-      padding: 1.5rem 2rem 2rem;
+      padding: 1.25rem;
     }
 
     form {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
       align-items: end;
     }
     label {
@@ -65,21 +64,20 @@
       margin-bottom: 0.3rem;
       display: block;
       color: #333;
+      font-size: 0.9rem;
     }
     input[type="text"],
     input[type="date"],
     input[type="number"],
     select {
       width: 100%;
-      padding: 0.5rem 0.75rem;
+      padding: 0.4rem 0.65rem;
       border: 2px solid #27ae60;
       border-radius: 0.5rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: border-color 0.3s ease;
     }
-    input[type="text"]:focus,
-    input[type="date"]:focus,
-    input[type="number"]:focus,
+    input:focus,
     select:focus {
       outline: none;
       border-color: #2ecc71;
@@ -87,74 +85,53 @@
     }
 
     button[type="submit"] {
-      grid-column: span 4;
+      grid-column: span 2;
       background-color: #2980b9;
       color: white;
       font-weight: 700;
-      padding: 0.75rem 1rem;
+      padding: 0.6rem 0.9rem;
       border: none;
-      border-radius: 0.75rem;
+      border-radius: 0.6rem;
       cursor: pointer;
       box-shadow: 0 5px 10px rgb(41 128 185 / 0.5);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     button[type="submit"]:hover {
       background-color: #1c5980;
       box-shadow: 0 7px 14px rgb(28 89 128 / 0.7);
     }
-    button[type="submit"]:focus,
-    button[type="submit"]:active {
-      outline: none;
-      transform: none;
-      box-shadow: 0 7px 14px rgb(28 89 128 / 0.9);
-    }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
     thead {
       background-color: #b2e7a9;
     }
     thead th {
-      padding: 0.7rem 0.9rem;
+      padding: 0.6rem;
       text-align: left;
       color: #2e7d32;
       font-weight: 700;
       border-bottom: 2px solid #27ae60;
     }
     tbody td {
-      padding: 0.6rem 0.9rem;
+      padding: 0.6rem;
       border-bottom: 1px solid #d1d1d1;
     }
     tbody tr:hover {
       background-color: #e8f5e9;
-    }
-    tbody td.text-center {
-      text-align: center;
-    }
-    tbody td.text-right {
-      text-align: right;
-      font-variant-numeric: tabular-nums;
     }
     tfoot {
       background-color: #d0f0c0;
       font-weight: 700;
     }
     tfoot td {
-      padding: 0.7rem 0.9rem;
+      padding: 0.6rem;
       border-top: 2px solid #27ae60;
       text-align: center;
-    }
-    tfoot td.text-left {
-      text-align: left;
-    }
-    tfoot td.text-right {
-      text-align: right;
-      font-variant-numeric: tabular-nums;
     }
 
     .btn-delete {
@@ -163,31 +140,25 @@
       color: #e74c3c;
       font-weight: 700;
       cursor: pointer;
-      transition: color 0.3s ease;
-      padding: 0;
       font-size: 0.9rem;
-      user-select: none;
     }
     .btn-delete:hover {
       color: #c0392b;
     }
-    .btn-delete:focus,
-    .btn-delete:active {
-      outline: none;
-      transform: none;
-    }
 
-    /* Responsive สำหรับมือถือจอเล็ก */
     @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
       form {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
       }
       button[type="submit"] {
-        grid-column: span 1 !important;
+        grid-column: span 1;
       }
       table thead tr th,
       table tbody tr td {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -223,8 +194,8 @@
         <button type="submit">เพิ่มรายการ</button>
       </form>
 
-      <div class="table-container" style="overflow-x:auto;">
-        <table aria-label="ตารางบันทึกชั่วโมงการสอน">
+      <div style="overflow-x:auto">
+        <table>
           <thead>
             <tr>
               <th>ชื่อนักเรียน</th>
@@ -269,24 +240,14 @@
 
     form.addEventListener("submit", e => {
       e.preventDefault();
-
       const studentName = document.getElementById("studentName").value.trim();
       const date = document.getElementById("date").value;
       const hours = parseFloat(document.getElementById("hours").value);
       const rate = parseInt(document.getElementById("rate").value);
 
-      if (!studentName) {
-        alert("กรุณาใส่ชื่อนักเรียน");
-        return;
-      }
-      if (!date || hours <= 0 || !rate) {
-        alert("กรุณากรอกข้อมูลให้ถูกต้อง");
-        return;
-      }
+      if (!studentName || !date || hours <= 0 || !rate) return;
 
-      const total = hours * rate;
-
-      entries.push({ studentName, date, hours, rate, total });
+      entries.push({ studentName, date, hours, rate, total: hours * rate });
       saveToLocal();
       renderTable();
       form.reset();
@@ -306,11 +267,10 @@
           <td class="text-center">${entry.rate}</td>
           <td class="text-right">${entry.total.toFixed(2)}</td>
           <td class="text-center">
-            <button class="btn-delete" aria-label="ลบรายการ" onclick="deleteEntry(${index})">ลบ</button>
+            <button class="btn-delete" onclick="deleteEntry(${index})">ลบ</button>
           </td>
         `;
         logTable.appendChild(row);
-
         sumHours += entry.hours;
         sumTotal += entry.total;
       });
