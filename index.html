@@ -58,7 +58,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       align-items: end;
     }
     label {
@@ -99,10 +99,17 @@
       font-size: 1rem;
       user-select: none;
       margin-top: 0.5rem;
+      width: fit-content;
     }
     button[type="submit"]:hover, #receiptBtn:hover {
       background-color: #1c5980;
       box-shadow: 0 7px 14px rgb(28 89 128 / 0.7);
+    }
+
+    #receiptBtn {
+      display: block;
+      margin-left: auto;
+      margin-bottom: 1rem;
     }
 
     table {
@@ -224,8 +231,13 @@
       form {
         grid-template-columns: 1fr !important;
       }
-      button[type="submit"], #receiptBtn {
+      button[type="submit"] {
         grid-column: span 1 !important;
+      }
+      #receiptBtn {
+        margin-left: 0;
+        width: 100%;
+        font-size: 1.1rem;
       }
       table thead tr th,
       table tbody tr td {
