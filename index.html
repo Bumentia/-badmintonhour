@@ -66,6 +66,7 @@
       display: block;
       color: #333;
     }
+    input[type="text"],
     input[type="date"],
     input[type="number"],
     select {
@@ -76,6 +77,7 @@
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
+    input[type="text"]:focus,
     input[type="date"]:focus,
     input[type="number"]:focus,
     select:focus {
@@ -85,7 +87,7 @@
     }
 
     button[type="submit"] {
-      grid-column: span 3;
+      grid-column: span 4;
       background-color: #2980b9;
       color: white;
       font-weight: 700;
@@ -186,6 +188,10 @@
     <main>
       <form id="teachingForm">
         <div>
+          <label for="studentName">ชื่อนักเรียน</label>
+          <input type="text" id="studentName" placeholder="ใส่ชื่อนักเรียน" required />
+        </div>
+        <div>
           <label for="date">วันที่</label>
           <input type="date" id="date" required />
         </div>
@@ -207,6 +213,7 @@
         <table aria-label="ตารางบันทึกชั่วโมงการสอน">
           <thead>
             <tr>
+              <th>ชื่อนักเรียน</th>
               <th>วันที่</th>
               <th class="text-center">ชั่วโมง</th>
               <th class="text-center">เรต</th>
@@ -218,6 +225,7 @@
           <tfoot>
             <tr>
               <td class="text-left">รวม</td>
+              <td>-</td>
               <td id="totalHours" class="text-center">0</td>
               <td>-</td>
               <td id="totalMoney" class="text-right">0 บาท</td>
@@ -248,10 +256,15 @@
     form.addEventListener("submit", e => {
       e.preventDefault();
 
+      const studentName = document.getElementById("studentName").value.trim();
       const date = document.getElementById("date").value;
       const hours = parseFloat(document.getElementById("hours").value);
       const rate = parseInt(document.getElementById("rate").value);
 
+      if (!studentName) {
+        alert("กรุณาใส่ชื่อนักเรียน");
+        return;
+      }
       if (!date || hours <= 0 || !rate) {
         alert("กรุณากรอกข้อมูลให้ถูกต้อง");
         return;
@@ -259,7 +272,7 @@
 
       const total = hours * rate;
 
-      entries.push({ date, hours, rate, total });
+      entries.push({ studentName, date, hours, rate, total });
       saveToLocal();
       renderTable();
       form.reset();
@@ -273,6 +286,7 @@
       entries.forEach((entry, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
+          <td>${entry.studentName}</td>
           <td>${entry.date}</td>
           <td class="text-center">${entry.hours}</td>
           <td class="text-center">${entry.rate}</td>
